@@ -1,8 +1,14 @@
 //  As a user, I want to be able to search for books
 
-//get item on click from 
+//  get item on click from search results
 
-
+// make fetch based on user input? or fetch entire database?
+const searchButton = document.querySelector('#searchBtn')
+const searchInput = document.querySelector('#search-input')
+searchButton.addEventListener('click', function (event) {
+  console.log(searchInput.value)
+})
+fetch()
 
 //  As a user I want to be able to add books from my search results to my list of books to read, or books I have read
 
