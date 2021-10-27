@@ -1,0 +1,31 @@
+For this assignment you will be writing an application for tracking books. The user will be able to track books they want to read, books they have read and ratings for the books they have read.
+
+Please write an app that fulfills the following requirements/user stories:
+
+* As a user, I want to be able to search for books
+
+* As a user I want to be able to add books from my search results to my list of books to read, or books I have read
+
+* As a user, I want to track books I have read
+
+* As a user, I need to be able to rate books I have read
+
+* As a user, I want to be able to make a list of books I want to read
+
+* The App must be well designed and have a well thought out user interface with a focus on the user experience. (While this ins't a design class, often times a developer will have to make these choices)
+
+ 
+
+This is the frontend only of this application. Please use the [Open Library API] (https://openlibrary.org/developers/api) 
+to allow users to search for books. When the user saves a book to one of their lists, be sure to save the `key` 
+field for the book as well. For now, just store the data in an array in the webpage. Be sure to read through the 
+various API endpoints and how they work. Also, be aware, there is a lot of data here, you will need to comb through 
+what you need and dont need. I recommend the JSONView extension for Chrome, but I am sure there are extensions for your browser of choice if you look. 
+
+Spend some time reading the docs for the API and exploring how it works to ensure you understand it.
+
+In future assignments we will be writing a backend API with a database that will be used to store the users book lists.
+ When writing the app, be sure to keep in mind that you will need to be sending data to a backend to be stored in a database.
+  (Hint: use functions to manipulate the local array, and then in the future it will be easier to swap that out for an api call.)
+
+When you are done, host this app on Netlify and turn in a Netlify link and a link to your Github repo.
