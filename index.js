@@ -5,10 +5,38 @@
 // make fetch based on user input? or fetch entire database?
 const searchButton = document.querySelector('#searchBtn')
 const searchInput = document.querySelector('#search-input')
+
+
 searchButton.addEventListener('click', function (event) {
-  console.log(searchInput.value)
+  searchBook(searchInput.value)
 })
-fetch()
+console.log(searchInput.value)
+
+
+function searchBook(query) {
+  const url = `https://openlibrary.org/search.json?title=${query}`;
+  fetch(url)
+    .then(res => res.json())
+    .then((jsonData) => {
+      const results = jsonData.docs.map(element => element.title);
+      console.log(results)
+      results.forEach((element) => {
+        
+        const bookListItem = document.createElement("li");
+        bookListItem.classList.add("item-div");
+
+        let list = document.querySelector("#searchResultsList");
+        list.appendChild(itemDiv);
+        
+      })
+
+    })
+    
+  
+}
+
+
+
 
 //  As a user I want to be able to add books from my search results to my list of books to read, or books I have read
 
