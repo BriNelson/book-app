@@ -18,15 +18,24 @@ function searchBook(query) {
   fetch(url)
     .then(res => res.json())
     .then((jsonData) => {
-      const results = jsonData.docs.map(element => element.title);
+      const results = jsonData.docs
       console.log(results)
       results.forEach((element) => {
         
         const bookListItem = document.createElement("li");
         bookListItem.classList.add("list-group-item");
-console.log(element)
+     console.log(element)
         let list = document.querySelector("#searchResultsList");
         list.appendChild(bookListItem);
+
+        const bookTitle = document.createElement("h1");
+        bookTitle.appendChild(document.createTextNode(`${element.title}`));
+        bookListItem.appendChild(bookTitle);
+
+        const item = document.createElement("p")
+        item.appendChild(document.createTextNode(`${element.author_name}`));
+        bookListItem.appendChild(item);
+
         
       })
 
