@@ -23,10 +23,10 @@ function searchBook(query) {
       results.forEach((element) => {
         
         const bookListItem = document.createElement("li");
-        bookListItem.classList.add("item-div");
-
+        bookListItem.classList.add("list-group-item");
+console.log(element)
         let list = document.querySelector("#searchResultsList");
-        list.appendChild(itemDiv);
+        list.appendChild(bookListItem);
         
       })
 
