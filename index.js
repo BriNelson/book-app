@@ -17,18 +17,20 @@ searchButton.addEventListener('click', function (event) {
 console.log(searchInput.value)
 
 
+
+
 function searchBook(query) {
   const url = `https://openlibrary.org/search.json?title=${query}`;
   fetch(url)
     .then(res => res.json())
     .then((jsonData) => {
       const results = jsonData.docs
-      console.log(results)
+      // console.log(results)
       results.forEach((element) => {
         
         const bookListItem = document.createElement("li");
         bookListItem.classList.add("list-group-item");
-     console.log(element)
+     
         let list = document.querySelector("#searchResultsList");
         list.appendChild(bookListItem);
 
@@ -51,6 +53,11 @@ function searchBook(query) {
         wantReadButton.classList.add("btn");
         wantReadButton.classList.add("btn-primary");
         bookListItem.appendChild(wantReadButton);
+
+        wantReadButton.addEventListener('click', function (event) {
+          booksToRead.push(element)
+          console.log(booksToRead)
+        })
 
         
       })
