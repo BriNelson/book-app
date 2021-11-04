@@ -6,6 +6,10 @@
 const searchButton = document.querySelector('#searchBtn')
 const searchInput = document.querySelector('#search-input')
 
+const booksRead = []
+const booksToRead = []
+const bookRating = []
+
 
 searchButton.addEventListener('click', function (event) {
   searchBook(searchInput.value)
@@ -28,13 +32,25 @@ function searchBook(query) {
         let list = document.querySelector("#searchResultsList");
         list.appendChild(bookListItem);
 
-        const bookTitle = document.createElement("h1");
+        const bookTitle = document.createElement("h3");
         bookTitle.appendChild(document.createTextNode(`${element.title}`));
         bookListItem.appendChild(bookTitle);
 
         const item = document.createElement("p")
-        item.appendChild(document.createTextNode(`${element.author_name}`));
+        item.appendChild(document.createTextNode(`Author: ${element.author_name}`));
         bookListItem.appendChild(item);
+
+        const readButton = document.createElement('button')
+        readButton.appendChild(document.createTextNode('have read'));
+        readButton.classList.add("btn");
+        readButton.classList.add("btn-primary");
+        bookListItem.appendChild(readButton);
+
+        const wantReadButton = document.createElement('button')
+        wantReadButton.appendChild(document.createTextNode('want to read'));
+        wantReadButton.classList.add("btn");
+        wantReadButton.classList.add("btn-primary");
+        bookListItem.appendChild(wantReadButton);
 
         
       })
