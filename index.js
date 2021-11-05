@@ -8,7 +8,7 @@ const searchInput = document.querySelector('#search-input')
 
 const booksRead = []
 const booksToRead = []
-const bookRating = []
+const bookRating = [1,2,3,4,5]
 
 
 searchButton.addEventListener('click', function (event) {
@@ -54,9 +54,30 @@ function searchBook(query) {
         wantReadButton.classList.add("btn-primary");
         bookListItem.appendChild(wantReadButton);
 
+        bookRating.forEach(element => {
+          const ratingStar = document.createElement('i')
+          ratingStar.classList.add("far")
+          ratingStar.classList.add("fa-star")
+          bookListItem.appendChild(ratingStar);
+
+          ratingStar.addEventListener('click', function (event) {
+            console.log(element)
+  
+            
+          })
+        })
+
         wantReadButton.addEventListener('click', function (event) {
           booksToRead.push(element)
           console.log(booksToRead)
+
+          
+        })
+          readButton.addEventListener('click', function (event) {
+          booksRead.push(element)
+          console.log(booksRead)
+
+          
         })
 
         
