@@ -21,24 +21,30 @@ mongoose.connect(mongoUri, {
 app.use(bodyParser.json());
 app.use(express.static('C:/Users/ladof/Desktop/3760/book app')); ////enviorment variable needs to go here
 
-// app.get("/todoData", (req, res) => {
-//     res.json(todoData)
+// app.get("/booksRead", (req, res) => {
+//     res.json(booksRead)
 //   res.send(req.params)
     
 //   })
     
   
   
-//   app.post("/todo", (req, res) => {
-//     // const todo = req.body
-//     const todo = new todoSchema({
+  app.post("/booksRead", (req, res) => {
+    // const todo = req.body
+    const bookSave = new bookSchema({
        
-//       title: req.body.title,
-//       complete: false,
-//       category: 'Work',
+      title: req.body.title,
+      author: false,
+        key: 'Work',
+        haveRead: false,
+      wantRead: false,
+      
   
-//     })
-//     todo.save().then((result) => { console.log(result) });
-//   })
+    })
+    bookSave.save().then((result) => { console.log(result) });
+  })
+
+
+
 
 app.listen(port, () => console.log(port))
