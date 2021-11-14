@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import bookSchema from "./models/bookModel.js"
 import { port, mongoUri } from './config.js'
 console.log(`Your port is ${port}`);
 const app = express();
@@ -29,14 +30,29 @@ app.use(express.static('C:/Users/ladof/Desktop/3760/book app')); ////enviorment 
     
   
   
-  app.post("/booksRead", (req, res) => {
+  app.post("/bookRead", (req, res) => {
     // const todo = req.body
     const bookSave = new bookSchema({
        
       title: req.body.title,
-      author: false,
-        key: 'Work',
-        haveRead: false,
+      author: req.body.author,
+      key: req.body.key,
+      haveRead: false,
+      wantRead: false,
+      
+  
+    })
+    bookSave.save().then((result) => { console.log(result) });
+  })
+
+  app.post("/wantRead", (req, res) => {
+    // const todo = req.body
+    const bookSave = new bookSchema({
+       
+      title: req.body.title,
+      author: req.body.author,
+      key: req.body.key,
+      haveRead: false,
       wantRead: false,
       
   
