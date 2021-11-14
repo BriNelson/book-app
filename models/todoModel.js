@@ -3,7 +3,7 @@ const { model, Schema } = pkg;
 
 
 
-const todoSchema = new Schema({
+const bookSchema = new Schema({
     title: String,
     author: String,
     key: String,
@@ -15,4 +15,4 @@ const todoSchema = new Schema({
 })
 
 
-export default model("todoSchema", todoSchema);
+export default model("bookSchema", bookSchema);

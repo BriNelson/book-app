@@ -83,7 +83,29 @@ function searchBook(query) {
         })
 
         wantReadButton.addEventListener('click', function (event) {
-          booksToRead.push(element)
+
+
+          fetch('http://localhost:3000/booksRead',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                title: element.title,
+                author: element.author_name,
+                key: element.key,
+                haveRead: false,
+                wantRead: true,
+
+              })
+          
+            }).then(result => {
+              return result.json();
+            })
+          .then(data => {console.log(data)})
+          
+          booksToRead.push(element.title)
           console.log(booksToRead)
 
           
