@@ -44,7 +44,7 @@ app.use(express.static('C:/Users/ladof/Desktop/3760/book app')); ////enviorment 
     })
     bookSave.save().then((result) => { console.log(result) });
   })
-
+ // post want read to mongo DB
   app.post("/wantRead", (req, res) => {
     // const todo = req.body
     const bookSave = new bookSchema({

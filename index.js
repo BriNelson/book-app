@@ -82,8 +82,11 @@ function searchBook(query) {
            })
         })
 
-        wantReadButton.addEventListener('click', function (event) {
 
+
+
+        // POST want read book to server
+        wantReadButton.addEventListener('click', function (event) {
 
           fetch('http://localhost:3000/wantRead',
             {
@@ -111,7 +114,8 @@ function searchBook(query) {
           
         })
 
-          readButton.addEventListener('click', function (event) {
+        readButton.addEventListener('click', function (event) {
+            
             fetch('http://localhost:3000/haveRead',
             {
               method: 'POST',
