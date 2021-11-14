@@ -16,7 +16,12 @@ searchButton.addEventListener('click', function (event) {
 })
 console.log(searchInput.value)
 
-
+document.addEventListener('click', event => {
+  if (event.target.matches(".fa-star")) {
+    let selectedStar = document.querySelector(".fa-star");
+    console.log(selectedStar)
+  }
+})
 
 
 function searchBook(query) {
@@ -54,17 +59,27 @@ function searchBook(query) {
         wantReadButton.classList.add("btn-primary");
         bookListItem.appendChild(wantReadButton);
 
-        bookRating.forEach(element => {
+        bookRating.forEach((bookRatingElement, index) => {
           const ratingStar = document.createElement('i')
-          ratingStar.classList.add("far")
+          ratingStar.classList.add("fas")
           ratingStar.classList.add("fa-star")
           bookListItem.appendChild(ratingStar);
+          
+           ratingStar.addEventListener('click', function (event) {
+          
+          //   bookRating.forEach((activeRatingElement, ratingIndex) => { 
 
-          ratingStar.addEventListener('click', function (event) {
-            console.log(element)
   
+          //     ratingStar.classList.add("activeStar")
+  
+
+          //   // console.log(event.target.element)
+          //   // console.log('this is the rating' + activeRatingElement)
             
-          })
+          //   //  console.log(bookRatingElement)
+          // })
+            
+           })
         })
 
         wantReadButton.addEventListener('click', function (event) {
