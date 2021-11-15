@@ -164,6 +164,10 @@ function searchBook(query) {
   
 }
 
+$('#myModal').on('exampleModal', function () {
+  $('#myInput').trigger('focus')
+})
+
 
 
 
