@@ -65,21 +65,21 @@ function searchBook(query) {
           ratingStar.classList.add("fa-star")
           bookListItem.appendChild(ratingStar);
           
-           ratingStar.addEventListener('click', function (event) {
+          ratingStar.addEventListener('click', function (event) {
           
-          //   bookRating.forEach((activeRatingElement, ratingIndex) => { 
+            //   bookRating.forEach((activeRatingElement, ratingIndex) => { 
 
   
-          //     ratingStar.classList.add("activeStar")
+            //     ratingStar.classList.add("activeStar")
   
 
-          //   // console.log(event.target.element)
-          //   // console.log('this is the rating' + activeRatingElement)
+            //   // console.log(event.target.element)
+            //   // console.log('this is the rating' + activeRatingElement)
             
-          //   //  console.log(bookRatingElement)
-          // })
+            //   //  console.log(bookRatingElement)
+            // })
             
-           })
+          })
         })
 
 
@@ -106,7 +106,7 @@ function searchBook(query) {
             }).then(result => {
               return result.json();
             })
-          .then(data => {console.log(data)})
+            .then(data => { console.log(data) })
           
           booksToRead.push(element.title)
           console.log(booksToRead)
@@ -116,7 +116,7 @@ function searchBook(query) {
 
         readButton.addEventListener('click', function (event) {
             
-            fetch('http://localhost:3000/haveRead',
+          fetch('http://localhost:3000/haveRead',
             {
               method: 'POST',
               headers: {
@@ -134,7 +134,7 @@ function searchBook(query) {
             }).then(result => {
               return result.json();
             })
-          .then(data => {console.log(data)})
+            .then(data => { console.log(data) })
           
           booksToRead.push(element.title)
           console.log(booksToRead)
@@ -150,16 +150,16 @@ function searchBook(query) {
           
           
           
-            booksRead.push(element)
-          console.log(booksRead)
-
+        booksRead.push(element)
+        console.log(booksRead)
+      
           
         })
 
         
       })
 
-    })
+    
     
   
 }

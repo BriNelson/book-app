@@ -20,7 +20,7 @@ mongoose.connect(mongoUri, {
 
  app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static('C:/Users/ladof/Desktop/3760/book app')); ////enviorment variable needs to go here
+app.use(express.static('public')); ////enviorment variable needs to go here
 
 // app.get("/booksRead", (req, res) => {
 //     res.json(booksRead)
