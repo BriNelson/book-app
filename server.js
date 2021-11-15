@@ -63,4 +63,4 @@ app.use(express.static('public')); ////enviorment variable needs to go here
 
 
 
-app.listen(port, () => console.log(port))
+app.listen(3000, () => console.log(port))
