@@ -27,15 +27,15 @@ app.use(express.static('public')) /// /enviorment variable needs to go here
 
 //   })
 
-app.post('/bookRead', (req, res) => {
+app.post('/haveRead', (req, res) => {
   // const todo = req.body
   const bookSave = new bookSchema({
 
     title: req.body.title,
     author: req.body.author,
     key: req.body.key,
-    haveRead: false,
-    wantRead: false
+    haveRead: req.body.haveRead,
+    wantRead: req.body.wantRead
 
   })
   bookSave.save().then((result) => { console.log(result) })
@@ -48,8 +48,8 @@ app.post('/wantRead', (req, res) => {
     title: req.body.title,
     author: req.body.author,
     key: req.body.key,
-    haveRead: false,
-    wantRead: false
+    haveRead: req.body.haveRead,
+    wantRead: req.body.wantRead
 
   })
   bookSave.save().then((result) => { console.log(result) })

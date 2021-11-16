@@ -41,7 +41,7 @@ function searchBook (query) {
         bookListItem.appendChild(bookTitle)
 
         const item = document.createElement('p')
-        item.appendChild(document.createTextNode(`Author: ${element.author_name}`))
+        item.appendChild(document.createTextNode(`Author: ${element.author_name[0]}`))
         bookListItem.appendChild(item)
 
         const readButton = document.createElement('button')
@@ -87,7 +87,7 @@ function searchBook (query) {
               },
               body: JSON.stringify({
                 title: element.title,
-                author: element.author_name,
+                author: element.author_name[0],
                 key: element.key,
                 haveRead: false,
                 wantRead: true
@@ -99,12 +99,12 @@ function searchBook (query) {
           })
             .then(data => { console.log(data) })
 
-          booksToRead.push(element.title)
-          console.log(booksToRead)
+          // booksToRead.push(element.title)
+          // console.log(booksToRead)
         })
 
         readButton.addEventListener('click', function (event) {
-          fetch('http://localhost:3000/haveRead',
+          fetch('/haveRead',
             {
               method: 'POST',
               headers: {
@@ -112,7 +112,7 @@ function searchBook (query) {
               },
               body: JSON.stringify({
                 title: element.title,
-                author: element.author_name,
+                author: element.author_name[0],
                 key: element.key,
                 haveRead: true,
                 wantRead: false
@@ -124,12 +124,12 @@ function searchBook (query) {
           })
             .then(data => { console.log(data) })
 
-          booksToRead.push(element.title)
-          console.log(booksToRead)
+          // booksToRead.push(element.title)
+          console.log(element.author_name[0])
         })
 
-        booksRead.push(element)
-        console.log(booksRead)
+        // booksRead.push(element)
+        // console.log(booksRead)
       })
     })
 }
