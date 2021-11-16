@@ -58,4 +58,13 @@ app.post('/wantRead', (req, res) => {
 if (port == null || port == '') {
   port = 8000
 }
+
+
+// read from data bases
+app.get('wantReadList', async (req, res) => {
+  const readList = await bookSchema.find({})
+  res.json(readList)
+ console.log('Response => ', records)
+})
+
 app.listen(port)
