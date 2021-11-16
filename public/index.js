@@ -8,8 +8,7 @@ const searchInput = document.querySelector('#search-input')
 
 const booksRead = []
 const booksToRead = []
-const bookRating = [1,2,3,4,5]
-
+const bookRating = [1, 2, 3, 4, 5]
 
 searchButton.addEventListener('click', function (event) {
   searchBook(searchInput.value)
@@ -17,78 +16,70 @@ searchButton.addEventListener('click', function (event) {
 console.log(searchInput.value)
 
 document.addEventListener('click', event => {
-  if (event.target.matches(".fa-star")) {
-    let selectedStar = document.querySelector(".fa-star");
+  if (event.target.matches('.fa-star')) {
+    const selectedStar = document.querySelector('.fa-star')
     console.log(selectedStar)
   }
 })
 
-
-function searchBook(query) {
-  const url = `https://openlibrary.org/search.json?title=${query}`;
+function searchBook (query) {
+  const url = `https://openlibrary.org/search.json?title=${query}`
   fetch(url)
     .then(res => res.json())
     .then((jsonData) => {
       const results = jsonData.docs
       // console.log(results)
       results.forEach((element) => {
-        
-        const bookListItem = document.createElement("li");
-        bookListItem.classList.add("list-group-item");
-     
-        let list = document.querySelector("#searchResultsList");
-        list.appendChild(bookListItem);
+        const bookListItem = document.createElement('li')
+        bookListItem.classList.add('list-group-item')
 
-        const bookTitle = document.createElement("h3");
-        bookTitle.appendChild(document.createTextNode(`${element.title}`));
-        bookListItem.appendChild(bookTitle);
+        const list = document.querySelector('#searchResultsList')
+        list.appendChild(bookListItem)
 
-        const item = document.createElement("p")
-        item.appendChild(document.createTextNode(`Author: ${element.author_name}`));
-        bookListItem.appendChild(item);
+        const bookTitle = document.createElement('h3')
+        bookTitle.appendChild(document.createTextNode(`${element.title}`))
+        bookListItem.appendChild(bookTitle)
+
+        const item = document.createElement('p')
+        item.appendChild(document.createTextNode(`Author: ${element.author_name}`))
+        bookListItem.appendChild(item)
 
         const readButton = document.createElement('button')
-        readButton.appendChild(document.createTextNode('have read'));
-        readButton.classList.add("btn");
-        readButton.classList.add("btn-primary");
-        bookListItem.appendChild(readButton);
+        readButton.appendChild(document.createTextNode('have read'))
+        readButton.classList.add('btn')
+        readButton.classList.add('btn-primary')
+        bookListItem.appendChild(readButton)
 
         const wantReadButton = document.createElement('button')
-        wantReadButton.appendChild(document.createTextNode('want to read'));
-        wantReadButton.classList.add("btn");
-        wantReadButton.classList.add("btn-primary");
-        bookListItem.appendChild(wantReadButton);
+        wantReadButton.appendChild(document.createTextNode('want to read'))
+        wantReadButton.classList.add('btn')
+        wantReadButton.classList.add('btn-primary')
+        bookListItem.appendChild(wantReadButton)
 
         bookRating.forEach((bookRatingElement, index) => {
           const ratingStar = document.createElement('i')
-          ratingStar.classList.add("fas")
-          ratingStar.classList.add("fa-star")
-          bookListItem.appendChild(ratingStar);
-          
-          ratingStar.addEventListener('click', function (event) {
-          
-            //   bookRating.forEach((activeRatingElement, ratingIndex) => { 
+          ratingStar.classList.add('fas')
+          ratingStar.classList.add('fa-star')
+          bookListItem.appendChild(ratingStar)
 
-  
+          ratingStar.addEventListener('click', function (event) {
+
+            //   bookRating.forEach((activeRatingElement, ratingIndex) => {
+
             //     ratingStar.classList.add("activeStar")
-  
 
             //   // console.log(event.target.element)
             //   // console.log('this is the rating' + activeRatingElement)
-            
+
             //   //  console.log(bookRatingElement)
             // })
-            
+
           })
         })
 
-
-
-
         // POST want read book to server
         wantReadButton.addEventListener('click', function (event) {
-
-          fetch('http://localhost:3000/wantRead',
+          fetch('/wantRead',
             {
               method: 'POST',
               headers: {
@@ -99,23 +90,20 @@ function searchBook(query) {
                 author: element.author_name,
                 key: element.key,
                 haveRead: false,
-                wantRead: true,
+                wantRead: true
 
               })
-          
+
             }).then(result => {
-              return result.json();
-            })
+            return result.json()
+          })
             .then(data => { console.log(data) })
-          
+
           booksToRead.push(element.title)
           console.log(booksToRead)
-
-          
         })
 
         readButton.addEventListener('click', function (event) {
-            
           fetch('http://localhost:3000/haveRead',
             {
               method: 'POST',
@@ -127,49 +115,24 @@ function searchBook(query) {
                 author: element.author_name,
                 key: element.key,
                 haveRead: true,
-                wantRead: false,
+                wantRead: false
 
               })
-          
+
             }).then(result => {
-              return result.json();
-            })
+            return result.json()
+          })
             .then(data => { console.log(data) })
-          
+
           booksToRead.push(element.title)
           console.log(booksToRead)
-
-          
         })
-          
-          
-          
-          
-          
-          
-          
-          
-          
+
         booksRead.push(element)
         console.log(booksRead)
-      
-          
-        })
-
-        
       })
-
-    
-    
-  
+    })
 }
-
-$('#myModal').on('exampleModal', function () {
-  $('#myInput').trigger('focus')
-})
-
-
-
 
 //  As a user I want to be able to add books from my search results to my list of books to read, or books I have read
 
