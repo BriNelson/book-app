@@ -18,9 +18,37 @@ console.log(searchInput.value)
 document.addEventListener('click', event => {
   if (event.target.matches('.fa-star')) {
     const selectedStar = document.querySelector('.fa-star')
-    console.log(selectedStar)
+
+    fetch('/wantReadList',
+            {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                
+
+              })
+
+            }).then(result => {
+            return result.json()
+          })
+            .then(data => { console.log(data) })
+
+
+    
   }
 })
+
+// fetch all books(for now)
+
+// fetch("/wantReadList")
+//   .then(res => res.json())
+//   .then((jsonData) => {
+//     console.log(jsonData)
+
+//   })
+
 
 function searchBook (query) {
   const url = `https://openlibrary.org/search.json?title=${query}`
@@ -28,7 +56,7 @@ function searchBook (query) {
     .then(res => res.json())
     .then((jsonData) => {
       const results = jsonData.docs
-      // console.log(results)
+      // console.log(jsonData)
       results.forEach((element) => {
         const bookListItem = document.createElement('li')
         bookListItem.classList.add('list-group-item')
@@ -62,7 +90,11 @@ function searchBook (query) {
           ratingStar.classList.add('fa-star')
           bookListItem.appendChild(ratingStar)
 
-          ratingStar.addEventListener('click', function (event) {
+  //         ratingStar.addEventListener('click', function (event) {
+
+            
+
+  // })
 
             //   bookRating.forEach((activeRatingElement, ratingIndex) => {
 

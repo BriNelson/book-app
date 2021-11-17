@@ -65,9 +65,9 @@ app.get('/wantReadList', (req, res) => {
   bookSchema.find()
     .exec()
     .then(docs => {
-      console.log(docs)
+      console.log("working")
       
-  
+  return docs
     })
   
 
