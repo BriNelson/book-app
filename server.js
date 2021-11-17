@@ -61,10 +61,17 @@ if (port == null || port == '') {
 
 
 // read from data bases
-app.get('wantReadList', async (req, res) => {
-  const readList = await bookSchema.find({})
-  res.json(readList)
- console.log('Response => ', records)
+app.get('/wantReadList', (req, res) => {
+  bookSchema.find()
+    .exec()
+    .then(docs => {
+      console.log(docs)
+      
+  
+    })
+  
+
 })
+  
 
 app.listen(port)
