@@ -20,23 +20,16 @@ document.addEventListener('click', event => {
     const selectedStar = document.querySelector('.fa-star')
 
     fetch('/wantReadList',
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
 
-              })
-
-            }).then(result => {
-            return result.json()
-          })
-            .then(data => { console.log(data) })
-
-
-    
+      }).then(result => {
+      return result
+    })
+      .then(data => { console.log(data) })
   }
 })
 
@@ -48,7 +41,6 @@ document.addEventListener('click', event => {
 //     console.log(jsonData)
 
 //   })
-
 
 function searchBook (query) {
   const url = `https://openlibrary.org/search.json?title=${query}`
@@ -90,23 +82,14 @@ function searchBook (query) {
           ratingStar.classList.add('fa-star')
           bookListItem.appendChild(ratingStar)
 
-  //         ratingStar.addEventListener('click', function (event) {
+          // bookRating.forEach((activeRatingElement, ratingIndex) => {
+          //   ratingStar.classList.add('activeStar')
 
-            
+          //   // console.log(event.target.element)
+          //   // console.log('this is the rating' + activeRatingElement)
 
-  // })
-
-            //   bookRating.forEach((activeRatingElement, ratingIndex) => {
-
-            //     ratingStar.classList.add("activeStar")
-
-            //   // console.log(event.target.element)
-            //   // console.log('this is the rating' + activeRatingElement)
-
-            //   //  console.log(bookRatingElement)
-            // })
-
-          })
+          //   //  console.log(bookRatingElement)
+          // })
         })
 
         // POST want read book to server
@@ -162,9 +145,9 @@ function searchBook (query) {
 
         // booksRead.push(element)
         // console.log(booksRead)
-      })
-    })
-}
+      })// end of for each
+    }) // end of .then
+} // end of function
 
 //  As a user I want to be able to add books from my search results to my list of books to read, or books I have read
 
