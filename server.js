@@ -59,15 +59,18 @@ if (port == null || port == '') {
   port = 8000
 }
 
-// read from data bases
+// read from data base
 app.get('/wantReadList', (req, res) => {
+  console.log('is endpoin working')
   bookSchema.find()
-    .exec()
+    // .exec()
     .then(docs => {
-      console.log(docs)
+      // console.log(do)
 
-      return docs
+      res.send(docs)
     })
+  
+  
 })
 
 app.listen(port)

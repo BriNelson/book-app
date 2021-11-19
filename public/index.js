@@ -15,23 +15,60 @@ searchButton.addEventListener('click', function (event) {
 })
 console.log(searchInput.value)
 
+
+
+
+
 document.addEventListener('click', event => {
-  if (event.target.matches('.fa-star')) {
-    const selectedStar = document.querySelector('.fa-star')
-
-    fetch('/wantReadList',
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-
-      }).then(result => {
-      return result
+  if (event.target.matches('#readListBtn')) {
+    // const selectedStar = document.querySelector('.fa-star')
+console.log('is this working')
+    fetch('/wantReadList')
+      .then(result => {
+        console.log(result)
+        return result.json()
     })
-      .then(data => { console.log(data) })
+      .then(data => {
+        console.log(data[0]._id)
+      
+        data.forEach((element, index) => {
+
+          if (element.haveRead === true) {
+            console.log(element.title)
+          }
+          
+        })
+      
+      })
   }
 })
+
+
+document.addEventListener('click', event => {
+  if (event.target.matches('#wishListBtn')) {
+    // const selectedStar = document.querySelector('.fa-star')
+console.log('is this working')
+    fetch('/wantReadList')
+      .then(result => {
+        console.log(result)
+        return result.json()
+    })
+      .then(data => {
+        console.log(data[0]._id)
+      
+        data.forEach((element, index) => {
+         
+          if (element.wantRead === true) {
+            console.log(element.title)
+          }
+        })
+      
+      })
+  }
+})
+
+
+
 
 // fetch all books(for now)
 
