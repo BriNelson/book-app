@@ -7,3 +7,14 @@
 .activeStar {
     color: orange;
 }
+
+ul#searchResultsList.list-group{
+    width: 1035px
+}
+
+ul#readList.list-group{
+    width: 1035px
+}
+ul#wishList.list-group{
+    width: 1035px
+}

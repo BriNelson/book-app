@@ -32,33 +32,47 @@
     <div class="d-flex align-items-start">
       <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
-        <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
-        <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
-        <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+        <button class="nav-link wishlist-btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Wish List</button>
+        <button class="nav-link readlist-btn" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Read List</button>
+        
       </div>
+      <!-- searc tab -->
       <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">stuff</div>
-        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">more</div>
-        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">test</div>
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          
+          <div class="input-group justify-content-lg-center search-bar">
+            <div class="form-outline">
+              <input type="search" id="search-input" class="form-control" />
+              <label class="form-label" for="form1">Search</label>
+            </div>
+            <button type="button" class="btn btn-primary"id="searchBtn"><!-- submit search term -->
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          
+    <!-- show search results -->
+          <ul id="searchResultsList" class="list-group">
+          
+        </div>
+
+        <!-- Wish List Tab -->
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <ul id="wishList" class="list-group"> 
+        </ul>
+        </div>
+
+        <!-- Read List Tab -->
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+        <ul id="readList" class="list-group"></ul>
+      </div>
       </div>
     </div>
   <!-- search bar -->
-  <button type="button" class="btn btn-primary"id="readListBtn">Read List</button>
-    <div class="input-group justify-content-lg-center search-bar">
-        <div class="form-outline">
-          <input type="search" id="search-input" class="form-control" />
-          <label class="form-label" for="form1">Search</label>
-        </div>
-        <button type="button" class="btn btn-primary"id="searchBtn"><!-- submit search term -->
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-      <button type="button" class="btn btn-primary"id="wishListBtn">Wish List</button>
-<!-- show search results -->
-      <ul id="searchResultsList" class="list-group">
+  <!-- <button type="button" class="btn btn-primary"id="readListBtn">Read List</button>
+    
   
-</ul>
+
+<button type="button" class="btn btn-primary"id="wishListBtn">Wish List</button> -->
 </div>
 
 <i class="far fa-star"></i>
