@@ -44,7 +44,7 @@ app.post('/haveRead', (req, res) => {
 app.post('/wantRead', (req, res) => {
   // const todo = req.body
   const bookSave = new bookSchema({
-
+    
     title: req.body.title,
     author: req.body.author,
     key: req.body.key,
@@ -71,6 +71,18 @@ app.get('/wantReadList', (req, res) => {
     })
   
   
+})
+
+app.delete('/wantReadList', (req, res) => {
+
+  const id = req.params._id
+  bookSchema.remove()
+
+.then(docs => {
+  // console.log(do)
+
+  res.send(docs)
+})
 })
 
 app.listen(port)
