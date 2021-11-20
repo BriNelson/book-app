@@ -248,7 +248,7 @@ function searchBook (query) {
             .then(data => { console.log(data) })
 
           // booksToRead.push(element.title)
-          console.log(element.author_name[0])
+          console.log(element._id)
         })
 
         // booksRead.push(element)
