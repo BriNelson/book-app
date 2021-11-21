@@ -15,7 +15,12 @@ searchButton.addEventListener('click', function (event) {
 })
 console.log(searchInput.value)
 
+document.addEventListener('click', event => {
+  if (event.target.matches('.fa-star')) {
+    console.log('this works')
 
+  }
+})
 
 
 

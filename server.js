@@ -73,16 +73,17 @@ app.get('/wantReadList', (req, res) => {
   
 })
 
-app.delete('/wantReadList', (req, res) => {
+app.delete('/wantReadId', (req, res) => {
+const id = req.params.wantReadId
 
-  const id = req.params._id
-  bookSchema.remove()
+  bookSchema.findByIdAndDelete({ _id: id })
+  .then(docs => {
+    // console.log(do)
 
-.then(docs => {
-  // console.log(do)
+    res.send(docs)
+  })
 
-  res.send(docs)
-})
-})
+ })
+
 
 app.listen(port)
