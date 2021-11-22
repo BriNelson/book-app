@@ -86,6 +86,7 @@ console.log('is this working')
 
 document.addEventListener('click', event => {
   if (event.target.matches('.wishlist-btn')) {
+    document.querySelector('#wishList').innerHTML = ''
     // const selectedStar = document.querySelector('.fa-star')
 console.log('is this working')
     fetch('/wantReadList')
@@ -114,6 +115,9 @@ console.log('is this working')
         const item = document.createElement('p')
         item.appendChild(document.createTextNode(`Author: ${element.author}`))
         bookListItem.appendChild(item)
+        
+            
+        
 
         
 
@@ -122,6 +126,8 @@ console.log('is this working')
           ratingStar.classList.add('fas')
           ratingStar.classList.add('fa-star')
           bookListItem.appendChild(ratingStar)
+
+          
 
           // bookRating.forEach((activeRatingElement, ratingIndex) => {
           //   ratingStar.classList.add('activeStar')
@@ -132,8 +138,29 @@ console.log('is this working')
           //   //  console.log(bookRatingElement)
           // })
         })
+            
+        const deleteButton = document.createElement('button')
+      deleteButton.appendChild(document.createTextNode('delete'))
+        deleteButton.classList.add('btn')
+        deleteButton.classList.add('btn-primary')
+        bookListItem.appendChild(deleteButton)
 
-
+        deleteButton.addEventListener('click', event => {
+          
+          // console.log('this works')
+        
+            fetch('/' + element._id,
+                    {
+                      method: 'DELETE',
+                      
+                    }).then(result => {
+                    return result.json()
+                  })
+            .then(data => { console.log(data) })
+          
+        
+          
+        })
 
             console.log(element.title)
           }
@@ -256,11 +283,15 @@ function searchBook (query) {
           console.log(element._id)
         })
 
+        
+
         // booksRead.push(element)
         // console.log(booksRead)
       })// end of for each
     }) // end of .then
 } // end of function
+
+
 
 //  As a user I want to be able to add books from my search results to my list of books to read, or books I have read
 
