@@ -204,7 +204,8 @@ function wishListConstructor(listType) {
 
 //   })
 
-function searchBook (query) {
+function searchBook(query) {
+  document.querySelector('#searchResultsList').innerHTML = ''
   const url = `https://openlibrary.org/search.json?title=${query}`
   fetch(url)
     .then(res => res.json())
@@ -276,11 +277,29 @@ function searchBook (query) {
           })
             .then(data => { console.log(data) })
 
-          // booksToRead.push(element.title)
-          // console.log(booksToRead)
+          
         })
-
+        
+        //post have read
         readButton.addEventListener('click', function (event) {
+console.log(element.key)
+
+fetch('/wantReadList')
+.then(result => {
+  console.log(result)
+  return result.json()
+})
+  .then(data => {
+    data.forEach((e, index) => { console.log(element.key); console.log(e.key)})
+    
+  })
+          
+          
+          
+          
+          
+          
+          
           fetch('/haveRead',
             {
               method: 'POST',
