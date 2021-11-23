@@ -76,7 +76,7 @@ app.get('/wantReadList', (req, res) => {
 app.delete('/:deleteRead', (req, res) => {
   const id = req.params.deleteRead
 //  console.log(req)
-  bookSchema.remove({_id: id})
+  bookSchema.findByIdAndDelete({_id: id})
   .then(docs => {
     // console.log(do)
     
