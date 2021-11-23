@@ -27,74 +27,96 @@ document.addEventListener('click', event => {
 document.addEventListener('click', event => {
   if (event.target.matches('.readlist-btn')) {
     // const selectedStar = document.querySelector('.fa-star')
-    document.querySelector('#readList').innerHTML = ''
-console.log('is this working')
-    fetch('/wantReadList')
-      .then(result => {
-        console.log(result)
-        return result.json()
-    })
-      .then(data => {
-        console.log(data[0]._id)
-      
-        data.forEach((element, index) => {
-
-          if (element.haveRead === true) {
-
-            const bookListItem = document.createElement('li')
-        bookListItem.classList.add('list-group-item')
-
-        const list = document.querySelector('#readList')
-        list.appendChild(bookListItem)
-
-        const bookTitle = document.createElement('h3')
-        bookTitle.appendChild(document.createTextNode(`${element.title}`))
-        bookListItem.appendChild(bookTitle)
-
-        const item = document.createElement('p')
-        item.appendChild(document.createTextNode(`Author: ${element.author}`))
-        bookListItem.appendChild(item)
-
-        
-
-        bookRating.forEach((bookRatingElement, index) => {
-          const ratingStar = document.createElement('i')
-          ratingStar.classList.add('fas')
-          ratingStar.classList.add('fa-star')
-          bookListItem.appendChild(ratingStar)
-
-          // bookRating.forEach((activeRatingElement, ratingIndex) => {
-          //   ratingStar.classList.add('activeStar')
-
-          //   // console.log(event.target.element)
-          //   // console.log('this is the rating' + activeRatingElement)
-
-          //   //  console.log(bookRatingElement)
-          // })
-        })
-
-                  
-            console.log(element.title)
-}
-          
-        })
-      
-      })
+    readListConstructor()
   }
 })
 
 
 document.addEventListener('click', event => {
   if (event.target.matches('.wishlist-btn')) {
-    wishListConstructor()
+    wishListConstructor('#wishList')
   }
 })
 
 
 
 
-function wishListConstructor() {
-  document.querySelector('#wishList').innerHTML = ''
+function readListConstructor() {
+  document.querySelector('#readList').innerHTML = ''
+  console.log('is this working')
+  fetch('/wantReadList')
+    .then(result => {
+      console.log(result)
+      return result.json()
+    })
+    .then(data => {
+      console.log(data[0]._id)
+
+      data.forEach((element, index) => {
+
+        if (element.haveRead === true) {
+
+          const bookListItem = document.createElement('li')
+          bookListItem.classList.add('list-group-item')
+
+          const list = document.querySelector('#readList')
+          list.appendChild(bookListItem)
+
+          const bookTitle = document.createElement('h3')
+          bookTitle.appendChild(document.createTextNode(`${element.title}`))
+          bookListItem.appendChild(bookTitle)
+
+          const item = document.createElement('p')
+          item.appendChild(document.createTextNode(`Author: ${element.author}`))
+          bookListItem.appendChild(item)
+
+
+
+          bookRating.forEach((bookRatingElement, index) => {
+            const ratingStar = document.createElement('i')
+            ratingStar.classList.add('fas')
+            ratingStar.classList.add('fa-star')
+            bookListItem.appendChild(ratingStar)
+
+            // bookRating.forEach((activeRatingElement, ratingIndex) => {
+            //   ratingStar.classList.add('activeStar')
+            //   // console.log(event.target.element)
+            //   // console.log('this is the rating' + activeRatingElement)
+            //   //  console.log(bookRatingElement)
+            // })
+          })
+
+          const deleteButton = document.createElement('button')
+          deleteButton.appendChild(document.createTextNode('delete'))
+          deleteButton.classList.add('btn')
+          deleteButton.classList.add('btn-primary')
+          bookListItem.appendChild(deleteButton)
+
+          deleteButton.addEventListener('click', event => {
+            // console.log('this works')
+            fetch('/' + element._id,
+              {
+                method: 'DELETE',
+              }).then(result => {
+                return result.json()
+              })
+              .then(data => { console.log(data) })
+
+              readListConstructor()
+
+          })
+
+
+          console.log(element.title)
+        }
+
+      })
+
+    })
+}
+
+function wishListConstructor(listType) {
+  document.querySelector(listType).innerHTML = ''
   // const selectedStar = document.querySelector('.fa-star')
   console.log('is this working')
   fetch('/wantReadList')
@@ -113,7 +135,7 @@ function wishListConstructor() {
           const bookListItem = document.createElement('li')
           bookListItem.classList.add('list-group-item')
 
-          const list = document.querySelector('#wishList')
+          const list = document.querySelector(listType)
           list.appendChild(bookListItem)
 
           const bookTitle = document.createElement('h3')
@@ -163,7 +185,7 @@ function wishListConstructor() {
               .then(data => { console.log(data) })
 
 
-              wishListConstructor()
+              wishListConstructor(listType)
           })
 
           console.log(element.title)
