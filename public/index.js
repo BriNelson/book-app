@@ -284,22 +284,7 @@ function searchBook(query) {
         readButton.addEventListener('click', function (event) {
 console.log(element.key)
 
-fetch('/wantReadList')
-.then(result => {
-  console.log(result)
-  return result.json()
-})
-  .then(data => {
-    data.forEach((e, index) => { console.log(element.key); console.log(e.key)})
-    
-  })
-          
-          
-          
-          
-          
-          
-          
+              
           fetch('/haveRead',
             {
               method: 'POST',

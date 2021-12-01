@@ -54,6 +54,8 @@ app.post('/wantRead', (req, res) => {
     wantRead: req.body.wantRead
 
   })
+bookSave.exist().then((result) => {console.log(result)})
+
   bookSave.save().then((result) => { console.log(result) })
 })
 
