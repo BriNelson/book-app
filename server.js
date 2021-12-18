@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import bookSchema from './models/bookModel.js'
 import { port, mongoUri } from './config.js'
+
 console.log(`Your port is ${port}`)
 const app = express()
 // const port = 3000;
@@ -43,8 +44,6 @@ app.post('/haveRead', (req, res) => {
 // post want read to mongo DB
 app.post('/wantRead', (req, res) => {
   // const todo = req.body
-  
-
   const bookSave = new bookSchema({
     
     title: req.body.title,
@@ -54,7 +53,7 @@ app.post('/wantRead', (req, res) => {
     wantRead: req.body.wantRead
 
   })
-bookSave.exist().then((result) => {console.log(result)})
+
 
   bookSave.save().then((result) => { console.log(result) })
 })
@@ -76,6 +75,23 @@ app.get('/wantReadList', (req, res) => {
   
   
 })
+
+app.put('/:changeRead', (req, res) => {
+  const id = req.params.changeRead
+  console.log(id)
+console.log('hittin put')
+bookSchema.findByIdAndUpdate({_id: id}, { haveRead: true } )
+.then(docs => {
+  // console.log(do)
+  
+  
+  res.send(docs)
+})
+    
+    
+  })
+
+ 
 
 app.delete('/:deleteRead', (req, res) => {
   const id = req.params.deleteRead
